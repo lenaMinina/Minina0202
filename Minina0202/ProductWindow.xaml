@@ -1,0 +1,35 @@
+﻿<Window x:Class="Minina0202.ProductWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Minina0202"
+        mc:Ignorable="d"
+        Title="ProductWindow" Height="555" Width="918">
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" HorizontalAlignment="Center" Margin="0,0,0,15" Background="#FF0E66BB" Width="888">
+            <TextBlock Text="Продукция" FontSize="30" FontWeight="Bold" Foreground="White" Width="200" TextAlignment="Center" Height="52"/>
+        </StackPanel>
+
+        <DataGrid x:Name="ProductsDataGrid" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" HeadersVisibility="Column" BorderThickness="1" BorderBrush="#CCCCCC" Height="311" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="888" Margin="0,0,0,115">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Наименование" Binding="{Binding Name}" Width="*"/>
+                <DataGridTextColumn Header="Артикул" Binding="{Binding Article}" Width="100"/>
+                <DataGridTextColumn Header="Количество на складе" Binding="{Binding StockCount}" Width="120"/>
+                <DataGridTextColumn Header="Минимальная стоимость" Binding="{Binding MinimalCost, StringFormat={}{0:N2} руб.}" Width="130"/>
+                <DataGridTextColumn Header="Тип продукции" Binding="{Binding ProductTypeName}" Width="150"/>
+                <DataGridTextColumn Header="Коэффициент типа" Binding="{Binding ProductTypeFactor, StringFormat={}{0:F2}}" Width="100"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,15,0,0"/>
+        <Button x:Name="CalculateMaterialsButton" HorizontalAlignment="Right" Content="Рассчитать материалы" Click="CalculateMaterialsButton_Click" Padding="15,10" Margin="0,342,86,34" Background="#FF0E66BB" Foreground="White" Grid.Row="1"/>
+        <Button x:Name="CloseButton" Content="Закрыть" Click="CloseButton_Click" Padding="15,10" Background="#FF0E66BB" Foreground="White" Margin="812,342,-1,34" Grid.Row="1"/>
+    </Grid>
+</Window>
